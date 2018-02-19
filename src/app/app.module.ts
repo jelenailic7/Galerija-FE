@@ -12,7 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { GalleriesComponent } from './galleries/galleries.component';
 import { MyGalleriesComponent } from './galleries/my-galleries/my-galleries.component';
 import { CreateGalleryComponent } from './create-gallery/create-gallery.component'
-import  { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -32,6 +33,7 @@ import  { AuthService } from './services/auth.service';
     AppRoutingModule,
     FormsModule,
     CustomFormsModule, 
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

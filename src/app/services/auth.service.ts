@@ -48,7 +48,8 @@ export class AuthService {
   public addUser(user){
     return new Observable((o: Observer<any>)=>{
         this.http.post('http://localhost:8000/api/register',{
-            'name': user.name,
+            'first_name':user.first_name,
+            'last_name': user.last_name,
             'email': user.email,
             'password': user.password,
             'password_confirmation':user.password_confirmation 
