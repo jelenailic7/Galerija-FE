@@ -1,0 +1,11 @@
+<form #searchForm="ngForm" (ngSubmit)="searchGallery(); searchForm.reset()">
+        <div class="col-lg-10">
+    <div class="input-group"> 
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" #search = "ngModel" placeholder="Search for..." required minlength="3" name="searchTerm">
+        <span class="input-group-btn">
+          <button type ="submit" class="btn btn-secondary" [disabled]="!searchForm.valid">Search</button>
+        </span>
+     </div>
+  </div>
+</form>
+  

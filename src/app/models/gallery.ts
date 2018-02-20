@@ -1,6 +1,6 @@
 import { User } from "./user";
 
-export class Gallerie {
+export class Gallery {
 
     public id: number;
     public name: string;

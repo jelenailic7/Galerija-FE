@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleriesService } from '../services/galleries.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Gallerie } from '../models/gallerie';
+import { Gallery } from '../models/gallery';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Gallerie } from '../models/gallerie';
 })
 export class GalleriesComponent implements OnInit {
 
-  public galleries: Gallerie [];
+  public galleries: Gallery [];
   public show = 5;
   constructor(private galleriesService: GalleriesService) { }
 
@@ -27,10 +27,4 @@ export class GalleriesComponent implements OnInit {
   this.galleries.push(...this.galleriesService.getPaginatedGalleries());
   }
   
-
 }
-// this.userService.getUsers(); // Do this in the on init function
-// this.users = this.userService.getPaginatedUsers();
-// loadMore() {
-//   this.users.push(...this.userService.getPaginatedUsers);
-// }

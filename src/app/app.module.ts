@@ -15,6 +15,9 @@ import { CreateGalleryComponent } from './create-gallery/create-gallery.componen
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GalleriesService } from './services/galleries.service';
+import { GalleryRowComponent } from './galleries/gallery-row/gallery-row.component';
+import { SearchInputComponent } from './search/search-input/search-input.component';
+import { SearchPageComponent } from './search/search-page/search-page.component';
 
 
 
@@ -27,7 +30,10 @@ import { GalleriesService } from './services/galleries.service';
     RegisterComponent,
     GalleriesComponent,
     MyGalleriesComponent,
-    CreateGalleryComponent
+    CreateGalleryComponent,
+    GalleryRowComponent,
+    SearchInputComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
