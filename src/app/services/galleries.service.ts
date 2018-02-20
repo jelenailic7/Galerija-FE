@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 
 
 @Injectable()
-export class galleriesService {
+export class GalleriesService {
 
 private galleries: Gallerie []=[];
 
@@ -29,9 +29,9 @@ public _url = 'http://localhost:8000/api/galleries/';
               this.galleries.push (new Gallerie (
                 gallerie.id,
                 gallerie.name,
-                gallerie.decription,
+                gallerie.description,
                 gallerie.image_url,
-                gallerie.user_id,
+                gallerie.user,
                 gallerie.created_at)
             )});
             o.next(this.galleries);

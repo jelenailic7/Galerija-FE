@@ -1,10 +1,10 @@
-<div  class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{ gallerie.image_url }}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{ gallerie.name }}</h5>
+<div  class="card" style="width: 18rem;" *ngFor="let gallerie of galleries">
+    <h6 class="card-title">{{ gallerie.name }}</h6>
+    <img class="card-img-top" src="{{ gallerie.image_url }}" alt="Card image cap">
+    <div class="card-body">
     <p class="card-text">{{ gallerie.description }}</p>
-    <p class="card-text">{{ gallerie.created_at}}</p>
-  
+    <p class="card-text">{{ gallerie.created_at }}</p>
+    <p class="card-text">{{ gallerie.user.first_name }}</p>
 
   </div>
 </div>

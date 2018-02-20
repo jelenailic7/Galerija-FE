@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyGalleriesComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

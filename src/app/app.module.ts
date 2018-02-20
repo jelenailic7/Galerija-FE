@@ -14,6 +14,7 @@ import { MyGalleriesComponent } from './galleries/my-galleries/my-galleries.comp
 import { CreateGalleryComponent } from './create-gallery/create-gallery.component'
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GalleriesService } from './services/galleries.service';
 
 
 
@@ -35,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     CustomFormsModule, 
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, GalleriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
