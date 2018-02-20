@@ -52,7 +52,8 @@ export class AuthService {
             'last_name': user.last_name,
             'email': user.email,
             'password': user.password,
-            'password_confirmation':user.password_confirmation 
+            'password_confirmation':user.password_confirmation,
+            'accepted_terms':user.accepted_terms
         }).subscribe(
           (user) => {
               o.next(user);

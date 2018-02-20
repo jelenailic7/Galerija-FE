@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-  <a class="navbar-brand" *ngIf="!auth.isAuthenticated" routerLink="/galleries">All galleries</a> 
-  <a class="navbar-brand" *ngIf="!auth.isAuthenticated" routerLink="/login">Login</a> 
+  <a class="navbar-brand"  routerLink="/galleries">All galleries</a> 
+  <a class="navbar-brand" *ngIf="!auth.isAuthenticated" routerLink="/login">Log In</a> 
   <a class="navbar-brand" *ngIf="!auth.isAuthenticated" routerLink="/register">Register</a> 
-  <a class="navbar-brand" routerLink="/my-gallery">My gallery</a> 
-  <a class="navbar-brand" routerLink="/create">Create new gallery</a> 
-  <a class="navbar-brand" (click)="auth.logout()">Logout</a> 
+  <a class="navbar-brand" *ngIf="auth.isAuthenticated" routerLink="/my-galleries">My galleries</a> 
+  <a class="navbar-brand" *ngIf="auth.isAuthenticated" routerLink="/create">Create new gallery</a> 
+  <a class="navbar-brand" *ngIf="auth.isAuthenticated" (click)="auth.logout()">Logout</a> 
 
 </nav>
 

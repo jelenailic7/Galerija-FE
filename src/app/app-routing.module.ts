@@ -21,6 +21,7 @@ const appRoutes: Routes = [
 
       { path:'register',
       component: RegisterComponent },
+      
       { path:'my-galleries',
       component: MyGalleriesComponent
       },
