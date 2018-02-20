@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class GalleriesService {
 
+offset : number = 0;
 private galleries: Gallerie []=[];
 
 public _url = 'http://localhost:8000/api/galleries/';
@@ -39,7 +40,11 @@ public _url = 'http://localhost:8000/api/galleries/';
           });   
       });
   }
-
+  getPaginatedGalleries() {
+    let tmp = this.galleries.slice(this.offset, this.offset + 5);
+    this.offset += 5;
+    return tmp;
+  }
 //   public search(term) {
 //     return new Observable((o: Observer<any>) => {
 //       let params = new HttpParams().append('term',term);

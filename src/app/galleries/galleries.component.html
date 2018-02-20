@@ -3,8 +3,8 @@
     <img class="card-img-top" src="{{ gallerie.image_url }}" alt="Card image cap">
     <div class="card-body">
     <p class="card-text">{{ gallerie.description }}</p>
+    <p class="card-text">{{ gallerie.user.first_name }} {{ gallerie.user.last_name }}</p>
     <p class="card-text">{{ gallerie.created_at }}</p>
-    <p class="card-text">{{ gallerie.user.first_name }}</p>
-
   </div>
 </div>
+<button class="btn btn-primary" (click) = "loadMore()">Load More..</button>

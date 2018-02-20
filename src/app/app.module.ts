@@ -34,7 +34,7 @@ import { GalleriesService } from './services/galleries.service';
     AppRoutingModule,
     FormsModule,
     CustomFormsModule, 
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [AuthService, GalleriesService],
   bootstrap: [AppComponent]
