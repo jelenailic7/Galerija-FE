@@ -41,6 +41,26 @@ public _url = 'http://localhost:8000/api/galleries/';
           });   
       });
   }
+  public getMyGalleries()
+  {  
+      return new Observable((o: Observer<any>) => {
+       this.http.get('http://localhost:8000/api/my-galleries/', {
+        headers: this.authService.getRequestHeaders(),
+       }).subscribe((galleries: any[]) => {
+            galleries.forEach(gallery => {
+              this.galleries.push(new Gallery (
+                gallery.id,
+                gallery.name,
+                gallery.description,
+                gallery.image_url,
+                gallery.user,
+                gallery.created_at)
+            )});
+            o.next(this.galleries);
+            o.complete();
+          });   
+      });
+  }
 
   getPaginatedGalleries() {
     let tmp = this.galleries.slice(this.offset, this.offset + 10);
@@ -71,26 +91,24 @@ public _url = 'http://localhost:8000/api/galleries/';
 
 
 
-//  public addGallerie(gallerie: Gallerie){
-//    return new Observable((o: Observer<any>) => {
-//      this.http.post(this._url, {
-//         'name': gallery.name,
-//         'description': gallery.description,
-//         'image_url': gallery.image_url,
-//         'user_id': gallery.user_id,
-//         'created_at': gallery.created_at
-//      },
-//      {
-//       headers: this.authService.getRequestHeaders(),
-//      })
-//      .subscribe((g:any)=> {
-//        let newGallery = new Gallery(g.id,g.name, g.description, g.image_url, g.user_id,g.created_at);
-//        this.galleries.push(newGallery);
-//        o.next(newGallery);
-//        return o.complete();
-//      });
-//    });
-//  }
+ public addGallery(gallery: Gallery){
+   return new Observable((o: Observer<any>) => {
+     this.http.post(this._url, {
+        'name': gallery.name,
+        'description': gallery.description,
+        'image_url': gallery.image_url,
+     },
+     {
+      headers: this.authService.getRequestHeaders(),
+     })
+     .subscribe((g:any)=> {
+       let newGallery = new Gallery(g.name, g.description, g.image_url);
+       this.galleries.push(newGallery);
+       o.next(newGallery);
+       return o.complete();
+     });
+   });
+ }
 
 
 //  public getGalleryById(id){

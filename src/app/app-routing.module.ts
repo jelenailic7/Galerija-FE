@@ -4,8 +4,8 @@ import { GalleriesComponent } from './galleries/galleries.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MyGalleriesComponent } from './galleries/my-galleries/my-galleries.component';
-import { CreateGalleryComponent } from './create-gallery/create-gallery.component';
 import { SearchPageComponent } from './search/search-page/search-page.component';
+import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.component';
 
 
 
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
       component: MyGalleriesComponent
       },
       { path:'create',
-      component: CreateGalleryComponent
+      component: GalleryFormComponent
       },
       { path:'galleries/search/:term',
       component: SearchPageComponent },

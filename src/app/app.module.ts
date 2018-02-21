@@ -11,13 +11,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { GalleriesComponent } from './galleries/galleries.component';
 import { MyGalleriesComponent } from './galleries/my-galleries/my-galleries.component';
-import { CreateGalleryComponent } from './create-gallery/create-gallery.component'
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GalleriesService } from './services/galleries.service';
 import { GalleryRowComponent } from './galleries/gallery-row/gallery-row.component';
 import { SearchInputComponent } from './search/search-input/search-input.component';
 import { SearchPageComponent } from './search/search-page/search-page.component';
+import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.component';
 
 
 
@@ -30,7 +30,7 @@ import { SearchPageComponent } from './search/search-page/search-page.component'
     RegisterComponent,
     GalleriesComponent,
     MyGalleriesComponent,
-    CreateGalleryComponent,
+    GalleryFormComponent,
     GalleryRowComponent,
     SearchInputComponent,
     SearchPageComponent
