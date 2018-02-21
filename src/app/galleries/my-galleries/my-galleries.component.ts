@@ -6,6 +6,7 @@ import { Gallery } from '../../models/gallery';
 @Component({
   selector: 'app-my-galleries',
   templateUrl: './my-galleries.component.html',
+  providers:[GalleriesService]
 })
 export class MyGalleriesComponent implements OnInit {
 
@@ -14,7 +15,7 @@ export class MyGalleriesComponent implements OnInit {
   constructor(private galleriesService: GalleriesService) { }
 
   ngOnInit() {
-    this.galleriesService.getGalleries().subscribe(data => {
+    this.galleriesService.getMyGalleries().subscribe(data => {
       this.galleries = this.galleriesService.getPaginatedGalleries();
      },
      (err: HttpErrorResponse) => {

@@ -44,7 +44,7 @@ public _url = 'http://localhost:8000/api/galleries/';
   public getMyGalleries()
   {  
       return new Observable((o: Observer<any>) => {
-       this.http.get('http://localhost:8000/api/my-galleries/', {
+       this.http.get('http://localhost:8000/api/my-galleries', {
         headers: this.authService.getRequestHeaders(),
        }).subscribe((galleries: any[]) => {
             galleries.forEach(gallery => {
