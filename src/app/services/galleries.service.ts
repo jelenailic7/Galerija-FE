@@ -43,7 +43,7 @@ public _url = 'http://localhost:8000/api/galleries/';
   }
 
   getPaginatedGalleries() {
-    let tmp = this.galleries.slice(this.offset, this.offset + 5);
+    let tmp = this.galleries.slice(this.offset, this.offset + 10);
     this.offset += 10;
     return tmp;
   }
@@ -64,7 +64,7 @@ public _url = 'http://localhost:8000/api/galleries/';
                 gallery.created_at)
           });
           o.next(this.galleries);
-          o.complete();
+          return o.complete();
         });
       });   
     }

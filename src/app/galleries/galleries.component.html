@@ -1,7 +1,6 @@
 <app-search-input></app-search-input>
-<div  class="card" style="width: 18rem;" *ngFor="let gallery of galleries">
-  <app-gallery-row [gallery]="gallery"></app-gallery-row>
-</div>
+  <app-gallery-row [gallery]="gallery" *ngFor="let gallery of galleries"></app-gallery-row>
+
 <button class="btn btn-primary" (click) = "loadMore()">Load More..</button> 
 
 

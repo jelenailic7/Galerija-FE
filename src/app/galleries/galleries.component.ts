@@ -11,7 +11,7 @@ import { Gallery } from '../models/gallery';
 export class GalleriesComponent implements OnInit {
 
   public galleries: Gallery [];
-  public show = 5;
+
   constructor(private galleriesService: GalleriesService) { }
 
   ngOnInit() {

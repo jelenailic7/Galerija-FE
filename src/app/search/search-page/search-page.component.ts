@@ -2,12 +2,11 @@ import { Component, Injector,OnInit } from '@angular/core';
 import { Gallery } from '../../models/gallery';
 import { GalleriesService } from '../../services/galleries.service';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router/';
 
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-
+providers:[GalleriesService]
 })
 export class SearchPageComponent  {
 
@@ -15,7 +14,6 @@ export class SearchPageComponent  {
  private term;
 
     constructor(private route: ActivatedRoute,
-                private router: Router,
                 private galleriesService: GalleriesService) {
     }
 
