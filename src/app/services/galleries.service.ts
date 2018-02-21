@@ -132,23 +132,23 @@ public _url = 'http://localhost:8000/api/galleries/';
  }
 
 
-//  public getGalleryById(id){
-//    return new Observable((o: Observer<any>) => {
-//      this.http.get(this._url + id,
-//       {
-//         headers: this.authService.getRequestHeaders(),
-//       }).subscribe((gallery:any) => {
-//         let newgallery = new Gallery( 
-//             gallery.id,
-//             gallery.name,
-//             gallery.decription,
-//             gallery.image_url,
-//             gallery.user_id,
-//             gallery.created_at)
-//         o.next(newGallery);
-//           return o.complete();
-//       });
-//    });
-//  }
+ public getGalleryById(id){
+   return new Observable((o: Observer<any>) => {
+     this.http.get(this._url + id,
+      {
+        headers: this.authService.getRequestHeaders(),
+      }).subscribe((gallery:any) => {
+        let newGallery = new Gallery( 
+            gallery.id,
+            gallery.name,
+            gallery.decription,
+            gallery.image_url,
+            gallery.user,
+            gallery.created_at)
+        o.next(newGallery);
+          return o.complete();
+      });
+   });
+ }
   
 }

@@ -19,6 +19,7 @@ import { SearchInputComponent } from './search/search-input/search-input.compone
 import { SearchPageComponent } from './search/search-page/search-page.component';
 import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.component';
 import { AuthorPageComponent } from './author-page/author-page.component';
+import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
 
 
 
@@ -35,7 +36,8 @@ import { AuthorPageComponent } from './author-page/author-page.component';
     GalleryRowComponent,
     SearchInputComponent,
     SearchPageComponent,
-    AuthorPageComponent
+    AuthorPageComponent,
+    GalleryShowComponent
   ],
   imports: [
     BrowserModule,

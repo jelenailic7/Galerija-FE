@@ -1,5 +1,5 @@
 <div  class="card" style="width: 18rem" >
-       <h6 class="card-title">{{ gallery.name }}</h6>
+       <h5 class="card-title"><a routerLink="/galleries/{{gallery.id}}">{{ gallery.name }}</a></h5>
         <img class="card-img-top" src="{{ gallery.image_url }}" alt="Card image cap">
         <div class="card-body">
         <p class="card-text">{{ gallery.description }}</p>
