@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { MyGalleriesComponent } from './galleries/my-galleries/my-galleries.component';
 import { SearchPageComponent } from './search/search-page/search-page.component';
 import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.component';
+import { AuthorPageComponent } from './author-page/author-page.component';
 
 
 
@@ -31,6 +32,9 @@ const appRoutes: Routes = [
       },
       { path:'galleries/search/:term',
       component: SearchPageComponent },
+
+      { path:'author/:id',
+      component: AuthorPageComponent },
 ];
 
 @NgModule({

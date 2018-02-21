@@ -110,6 +110,27 @@ public _url = 'http://localhost:8000/api/galleries/';
    });
  }
 
+ public getAuthorGalleries(id)
+ {  
+     return new Observable((o: Observer<any>) => {
+      this.http.get('http://localhost:8000/api/author/' + id, {
+       headers: this.authService.getRequestHeaders(),
+      }).subscribe((galleries: any[]) => {
+           galleries.forEach(gallery => {
+             this.galleries.push(new Gallery (
+               gallery.id,
+               gallery.name,
+               gallery.description,
+               gallery.image_url,
+               gallery.user,
+               gallery.created_at)
+           )});
+           o.next(this.galleries);
+           o.complete();
+         });   
+     });
+ }
+
 
 //  public getGalleryById(id){
 //    return new Observable((o: Observer<any>) => {
