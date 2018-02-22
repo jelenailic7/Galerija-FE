@@ -22,7 +22,8 @@ import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.comp
 import { AuthorPageComponent } from './author-page/author-page.component';
 import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
 import { GalleryResolver } from './resolvers/gallery.resolver';
-import { AuthorResolver } from './resolvers/author.resolver';
+import { CommentFormComponent } from './comments/comment-form/comment-form.component';
+import { CommentsShowComponent } from './comments/comments-show.component';
 
 
 
@@ -40,7 +41,9 @@ import { AuthorResolver } from './resolvers/author.resolver';
     SearchInputComponent,
     SearchPageComponent,
     AuthorPageComponent,
-    GalleryShowComponent
+    GalleryShowComponent,
+    CommentFormComponent,
+    CommentsShowComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,7 @@ import { AuthorResolver } from './resolvers/author.resolver';
     CustomFormsModule, 
     HttpClientModule,
   ],
-  providers: [AuthService, GalleriesService, GalleryResolver, AuthorResolver],
+  providers: [AuthService, GalleriesService, GalleryResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

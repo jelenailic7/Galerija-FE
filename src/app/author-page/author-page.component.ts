@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleriesService } from '../services/galleries.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Gallery } from '../models/gallery';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,16 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AuthorPageComponent implements OnInit {
 
-  public galleries: Gallery [];
+  private galleries: Gallery [];
 
   constructor(private galleriesService: GalleriesService, private route:ActivatedRoute) { }
 
-   public ngOnInit() {
-      this.route.data
-          .subscribe((data:{galleries: Gallery[]})=>{
-            this.galleries = data.galleries;
-            data.galleries = this.galleriesService.getPaginatedGalleries();
-           });        
+   public ngOnInit() {    
+      this.route.params.subscribe(() => {
+               let id = +this.route.snapshot.paramMap.get('id');
+          
+           this.galleriesService.getAuthorGalleries(id).subscribe(data => {
+             this.galleries = this.galleriesService.getPaginatedGalleries();
+            });
+          });
         }
       
 
@@ -29,3 +30,8 @@ export class AuthorPageComponent implements OnInit {
   }
   
 }
+// getPaginatedGalleries() {
+//   let tmp = this.galleries.slice(this.offset, this.offset + 10);
+//   this.offset += 10;
+//   return tmp;
+// }

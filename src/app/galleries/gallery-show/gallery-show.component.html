@@ -1,7 +1,7 @@
 <h3>{{ gallery.name }}</h3>
 <p><a routerLink="/author/{{gallery.user.id}}">{{ gallery.user.first_name }} {{ gallery.user.last_name }}</a></p>
 <p>{{ gallery.description }}</p>
-<div id="carousel-generic" class="carousel slide" data-ride="carousel">
+<!-- <div id="carousel-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox" >
             <div  class="carousel-item"  *ngFor="let image of gallery.image_url">
                 <a href="{{ image }}" target="_blank">
@@ -19,8 +19,10 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-</div>
+</div> -->
     <p>Comments</p>
-    
-
+    <div *ngFor="let comment of gallery.comments">
+        <p>comment.text</p>
+    </div>  
+<!-- <app-comment-form></app-comment-form> -->
     <!-- *ngFor="let image of gallery.image_url; let index = index" [class.active]="index == 0" -->

@@ -1,0 +1,19 @@
+<hr>
+<h4>Add new comment</h4>
+<form #commentForm="ngForm" (ngSubmit)="submit(comment)">
+ 
+    <div class="form-group">
+            <label>Text</label>
+            <textarea #text="ngModel" [(ngModel)]="gallery.text" name="text" type="text" rows="3" class="form-control" maxlength="1000"> 
+                </textarea>                       
+            <div *ngIf="text.invalid && (text.dirty ||text.touched)" class="alert alert-danger">
+                    <div *ngIf="text.errors.maxlength">
+                    Text field must be less then 1000 characters.
+                </div>
+           </div>
+        </div>
+
+    <div class="input-group col-md-5 pl-0 my-lg-4 my-2">
+        <button [disabled]="!commentForm.valid" type="submit" class="btn btn-primary mr-2">Submit</button>
+    </div>
+</form>

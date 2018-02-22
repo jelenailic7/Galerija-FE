@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../services/galleries.service';
 
 
+
 @Component({
-  selector: 'app-gallery-show',
-  templateUrl: './gallery-show.component.html'
+  selector: 'app-comment-form',
+  templateUrl: './comment-form.component.html'
 })
-export class GalleryShowComponent {
+export class CommentFormComponent {
 
   private gallery: Gallery;
 
@@ -16,13 +17,10 @@ export class GalleryShowComponent {
                 private galleriesService:GalleriesService){
 
     }
-
-    public ngOnInit() {
-      this.route.data
-          .subscribe((data: {gallery: Gallery}) => {
-              this.gallery = data.gallery;
-              
-          });
-        }
-
+    // public ngOnInit() {       
+    //         let id = +this.route.snapshot.paramMap.get('id');
+    //         this.galleriesService.getGalleryById(id).subscribe(data => {
+    //             this.gallery = data;
+    //             });
+    //  }
 }

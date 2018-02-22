@@ -5,6 +5,7 @@ import { HttpClient,HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { Comment } from '../models/comment';
 
 
 @Injectable()
@@ -13,6 +14,7 @@ export class GalleriesService {
 offset : number = 0;
 
 private galleries: Gallery []=[];
+private comments: Comment []=[];
 
 public _url = 'http://localhost:8000/api/galleries/';
 
@@ -141,14 +143,38 @@ public _url = 'http://localhost:8000/api/galleries/';
         let newGallery = new Gallery( 
             gallery.id,
             gallery.name,
-            gallery.decription,
+            gallery.description,
             gallery.image_url,
             gallery.user,
-            gallery.created_at)
+            gallery.created_at,
+            gallery.comments)
         o.next(newGallery);
           return o.complete();
       });
    });
  }
+
+ public getGalleryComments(id){
+  return new Observable((o: Observer<any>) => {
+    this.http.get(this._url + id,
+     {
+       headers: this.authService.getRequestHeaders(),
+      }).subscribe((comments: any[]) => {
+        comments.forEach(comment => {
+          this.comments.push(new Comment (
+            comment.id,
+            comment.text,
+            comment.user_id,
+            comment.gallery_id,
+            comment.created_at )
+        )});
+        o.next(this.comments);
+        o.complete();
+      });   
+    })
+  }
+
+ 
+
   
 }

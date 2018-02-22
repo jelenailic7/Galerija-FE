@@ -10,7 +10,7 @@ import { Gallery } from '../models/gallery';
 })
 export class GalleriesComponent implements OnInit {
 
-  public galleries: Gallery [];
+  public galleries: Gallery []=[];
 
   constructor(private galleriesService: GalleriesService) { }
 
