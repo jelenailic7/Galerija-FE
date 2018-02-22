@@ -9,7 +9,6 @@ import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.comp
 import { AuthorPageComponent } from './author-page/author-page.component';
 import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
 import { GalleryResolver } from './resolvers/gallery.resolver';
-import { CommentsShowComponent } from './comments/comments-show.component';
 
 
 
@@ -44,9 +43,8 @@ const appRoutes: Routes = [
       resolve: {
         gallery: GalleryResolver
         }  
-    },
-    //   { path:'galleries/:id/comments',
-    //     component: CommentsShowComponent}
+    }
+     
 ];
 
 @NgModule({

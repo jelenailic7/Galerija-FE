@@ -1,4 +1,5 @@
 import { User } from "./user";
+import {Comment} from './comment';
 
 export class Gallery {
 
@@ -8,10 +9,10 @@ export class Gallery {
     public image_url: Array<any>;
     public user: User;
     public created_at :string;
-    public comments: Comment[];
+    public comments: Comment;
   
  
-    constructor(id? , name?, description?,image_url?, user?,created_at?, comments?) {
+    constructor(id? , name?, description?, image_url?, user?, created_at?, comments?) {
       this.id = id;
       this.name = name;
       this.description = description;

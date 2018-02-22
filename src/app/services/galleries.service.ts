@@ -147,7 +147,7 @@ public _url = 'http://localhost:8000/api/galleries/';
             gallery.image_url,
             gallery.user,
             gallery.created_at,
-            gallery.comments)
+            gallery.comments )
         o.next(newGallery);
           return o.complete();
       });

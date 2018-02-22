@@ -17,10 +17,7 @@ export class CommentFormComponent {
                 private galleriesService:GalleriesService){
 
     }
-    // public ngOnInit() {       
-    //         let id = +this.route.snapshot.paramMap.get('id');
-    //         this.galleriesService.getGalleryById(id).subscribe(data => {
-    //             this.gallery = data;
-    //             });
-    //  }
+    public ngOnInit() {   
+    }    
+ 
 }

@@ -22,7 +22,8 @@
 </div> -->
     <p>Comments</p>
     <div *ngFor="let comment of gallery.comments">
-        <p>comment.text</p>
+        <p>{{comment.text}}</p>
     </div>  
-<!-- <app-comment-form></app-comment-form> -->
+
+<app-comment-form></app-comment-form>
     <!-- *ngFor="let image of gallery.image_url; let index = index" [class.active]="index == 0" -->
