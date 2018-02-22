@@ -15,18 +15,15 @@ export class AuthorPageComponent implements OnInit {
 
   constructor(private galleriesService: GalleriesService, private route:ActivatedRoute) { }
 
-  ngOnInit() {
-    this.route.params.subscribe(() => {
-        let id = +this.route.snapshot.paramMap.get('id');
-   
-    this.galleriesService.getAuthorGalleries(id).subscribe(data => {
-      this.galleries = this.galleriesService.getPaginatedGalleries();
-     },
-     (err: HttpErrorResponse) => {
-       alert(`Backend returned code ${err.status} with message: ${err.error}`);
-      });
-     });
-  }
+   public ngOnInit() {
+      this.route.data
+          .subscribe((data:{galleries: Gallery[]})=>{
+            this.galleries = data.galleries;
+            data.galleries = this.galleriesService.getPaginatedGalleries();
+           });        
+        }
+      
+
   public loadMore() {
   this.galleries.push(...this.galleriesService.getPaginatedGalleries());
   }

@@ -17,16 +17,17 @@ export class GalleryShowComponent {
                 private galleriesService:GalleriesService){
 
     }
-    public ngOnInit() {       
-            let id = +this.route.snapshot.paramMap.get('id');
-            this.galleriesService.getGalleryById(id).subscribe(data => {
-                this.gallery = data;
-                },
-            (err: HttpErrorResponse) => {
-            alert(`Backend returned code ${err.status} with message: ${err.error}`);
-            }
-        );
-     }
-   
+    // public ngOnInit() {       
+    //         let id = +this.route.snapshot.paramMap.get('id');
+    //         this.galleriesService.getGalleryById(id).subscribe(data => {
+    //             this.gallery = data;
+    //             });
+    //  }
+    public ngOnInit() {
+      this.route.data
+          .subscribe((data: {gallery: Gallery}) => {
+              this.gallery = data.gallery;
+          });
+        }
 
 }

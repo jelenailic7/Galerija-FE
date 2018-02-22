@@ -8,6 +8,8 @@ import { SearchPageComponent } from './search/search-page/search-page.component'
 import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.component';
 import { AuthorPageComponent } from './author-page/author-page.component';
 import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
+import { GalleryResolver } from './resolvers/gallery.resolver';
+import { AuthorResolver } from './resolvers/author.resolver';
 
 
 
@@ -35,10 +37,18 @@ const appRoutes: Routes = [
       component: SearchPageComponent },
 
       { path:'author/:id',
-      component: AuthorPageComponent },
+      component: AuthorPageComponent,
+      resolve: {
+        galleries: AuthorResolver
+        }  
+     },
 
       { path:'galleries/:id',
-      component: GalleryShowComponent },
+      component: GalleryShowComponent,
+      resolve: {
+        gallery: GalleryResolver
+        }  
+    },
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation'
+import { RouterModule, Routes } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import { SearchPageComponent } from './search/search-page/search-page.component'
 import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.component';
 import { AuthorPageComponent } from './author-page/author-page.component';
 import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
+import { GalleryResolver } from './resolvers/gallery.resolver';
+import { AuthorResolver } from './resolvers/author.resolver';
 
 
 
@@ -46,7 +49,7 @@ import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.comp
     CustomFormsModule, 
     HttpClientModule,
   ],
-  providers: [AuthService, GalleriesService],
+  providers: [AuthService, GalleriesService, GalleryResolver, AuthorResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
