@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Gallery } from '../../models/gallery';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../services/galleries.service';
+import { Comment } from '../../models/comment';
 
 
 
@@ -11,13 +11,21 @@ import { GalleriesService } from '../../services/galleries.service';
 })
 export class CommentFormComponent {
 
-  private gallery: Gallery;
+  private comment: Comment = new Comment();
+
 
     constructor(private route:ActivatedRoute,
                 private galleriesService:GalleriesService){
 
     }
-    public ngOnInit() {   
-    }    
+    public submit(comment: Comment) {
+        console.log('eeeeee');
+            let id = +this.route.snapshot.paramMap.get('id');
+            this.galleriesService.addComment(comment, id)
+             .subscribe((data) => {
+               return this.comment = data;
+         });   
+    
+    }  
  
 }

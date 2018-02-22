@@ -9,6 +9,7 @@ import { GalleryFormComponent } from './galleries/gallery-form/gallery-form.comp
 import { AuthorPageComponent } from './author-page/author-page.component';
 import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
 import { GalleryResolver } from './resolvers/gallery.resolver';
+import { CommentFormComponent } from './comments/comment-form/comment-form.component';
 
 
 
@@ -42,8 +43,10 @@ const appRoutes: Routes = [
       component: GalleryShowComponent,
       resolve: {
         gallery: GalleryResolver
-        }  
-    }
+        } 
+    },
+    { path:'galleries/:id',
+    component: CommentFormComponent},
      
 ];
 

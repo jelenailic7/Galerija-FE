@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Gallery } from '../../models/gallery';
 import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../services/galleries.service';
+import { Comment } from '@angular/compiler';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { GalleriesService } from '../../services/galleries.service';
 export class GalleryShowComponent {
 
   private gallery: Gallery;
+  private comment: Comment;
 
     constructor(private route:ActivatedRoute,
                 private galleriesService:GalleriesService){
@@ -24,5 +26,7 @@ export class GalleryShowComponent {
               
           });
         }
+    
+    
 
 }

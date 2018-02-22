@@ -4,7 +4,7 @@
  
     <div class="form-group">
             <label>Text</label>
-            <textarea #text="ngModel" [(ngModel)]="gallery?.comment.text" name="text" type="text" rows="3" class="form-control" maxlength="1000"> 
+            <textarea #text="ngModel" [(ngModel)]="comment.text" name="text" type="text" rows="3" class="form-control" maxlength="1000"> 
                 </textarea>                       
             <div *ngIf="text.invalid && (text.dirty ||text.touched)" class="alert alert-danger">
                     <div *ngIf="text.errors.maxlength">

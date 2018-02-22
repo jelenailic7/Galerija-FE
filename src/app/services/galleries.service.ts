@@ -174,7 +174,25 @@ public _url = 'http://localhost:8000/api/galleries/';
     })
   }
 
- 
+  public addComment(comment: Comment, id){
+    console.log("KOMENTAR");  
+    return new Observable((o: Observer<any>) => {
+      console.log('dkksakdas')
+      this.http.post(this._url + id, {
+        'text': comment.text,
+        'gallery_id': id,
+      },
+      {
+      headers: this.authService.getRequestHeaders(),
+      })
+      .subscribe((c:any)=> {
+        let newComment = new Comment(c.text, c.gallery_id);
+        this.comments.push(newComment);
+        o.next(newComment);
+        return o.complete();
+      });
+  });
+}
 
   
 }
