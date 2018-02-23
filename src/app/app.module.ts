@@ -24,6 +24,7 @@ import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.comp
 import { GalleryResolver } from './resolvers/gallery.resolver';
 import { CommentFormComponent } from './comments/comment-form/comment-form.component';
 import { CommentShowComponent } from './comments/comment-form/comment-show/comment-show.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -52,7 +53,7 @@ import { CommentShowComponent } from './comments/comment-form/comment-show/comme
     CustomFormsModule, 
     HttpClientModule,
   ],
-  providers: [AuthService, GalleriesService, GalleryResolver],
+  providers: [AuthService, GalleriesService, GalleryResolver, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

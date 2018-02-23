@@ -10,6 +10,7 @@ import { AuthorPageComponent } from './author-page/author-page.component';
 import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
 import { GalleryResolver } from './resolvers/gallery.resolver';
 import { CommentFormComponent } from './comments/comment-form/comment-form.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -28,9 +29,11 @@ const appRoutes: Routes = [
       component: RegisterComponent },
 
       { path:'my-galleries',
+      canActivate: [AuthGuard],
       component: MyGalleriesComponent
       },
       { path:'create',
+      canActivate: [AuthGuard],
       component: GalleryFormComponent
       },
       { path:'galleries/search/:term',
@@ -46,9 +49,11 @@ const appRoutes: Routes = [
         } 
     },
     { path:'galleries/:id/comments',
+    canActivate: [AuthGuard],       
     component: CommentFormComponent},
     
     { path: 'edit-gallery/:id',
+    canActivate: [AuthGuard],
     component: GalleryFormComponent }, 
 ];
 

@@ -27,6 +27,7 @@ export class AuthService {
            window.localStorage.setItem('loginToken',data.token);
            window.localStorage.setItem('user', JSON.stringify(data.user));
            this.isAuthenticated = true;
+           console.log(this.isAuthenticated);
            o.next(data.token);
            return o.complete();
          },(err)=> {
