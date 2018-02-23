@@ -5,7 +5,7 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div  class="carousel-item"  *ngFor="let url of gallery.image_url; let index = index" [class.active]="index == 0" >
-                <a href="{{ url }}" target="_blank"> -->
+                <a href="{{ url }}" target="_blank">
                     <img src="{{ url }}" class="d-block w-100" alt="">
                 </a>
              </div>
