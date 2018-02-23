@@ -51,11 +51,8 @@ export class GalleryShowComponent {
 
 
    public editGallery(gallery){
-     this.router.navigate(['/edit-gallery', gallery.id]);
-     this.galleriesService.editGallery(gallery).subscribe((gallery)=>
-          this.gallery = gallery);
-          console.log('ko');
-
+     this.router.navigate(['/edit-gallery', this.gallery.id]);
+     
    }
     
    public checked() {

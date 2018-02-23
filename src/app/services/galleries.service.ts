@@ -219,10 +219,10 @@ public removeGallery(gallery: Gallery)
   }
 
 
-  public editGallery(gallery: Gallery)
+  public editGallery(gallery: Gallery, id)
   {
     return new Observable((o: Observer<any>) => {
-      this.http.put('http://localhost:8000/api/edit-gallery/' + gallery.id, {
+      this.http.put('http://localhost:8000/api/edit-gallery/' + id, {
         'name': gallery.name,
         'description': gallery.description,
         'image_url': gallery.image_url,
