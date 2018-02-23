@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router:Router) {
     this.isAuthenticated = !!window.localStorage.getItem('loginToken');
-    this.user = window.localStorage.getItem('user');
+    this.user = JSON.parse(window.localStorage.getItem('user'));
    }
    
   public login(email:string, password: string) {
@@ -25,8 +25,7 @@ export class AuthService {
        }).subscribe(
          (data: {token: string, user}) => {
            window.localStorage.setItem('loginToken',data.token);
-           window.localStorage.setItem('user', data.user);
-           console.log(data.user);
+           window.localStorage.setItem('user', JSON.stringify(data.user));
            this.isAuthenticated = true;
            o.next(data.token);
            return o.complete();

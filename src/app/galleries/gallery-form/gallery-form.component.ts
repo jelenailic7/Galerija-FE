@@ -13,42 +13,37 @@ export class GalleryFormComponent  {
 
     public selected:boolean;
 
+
     constructor(
         private galleriesService: GalleriesService,
         private router: Router
     ) { }
 
+    public addImage() {
+        this.selected = true;
+    }
    
 
-    public submit(gallery: Gallery) {
-        this.galleriesService.addGallery(gallery).subscribe();
-            this.router.navigate(['/my-galleries']);
+    // public submit(gallery: Gallery) {
+    //     this.galleriesService.addGallery(gallery).subscribe();
+    //         this.router.navigate(['/my-galleries']);
      
-    }
+    // }
+
     public cancel() {
         this.router.navigate(['/my-galleries']);
     }
 
-
-    // submitContact(contact: Contact) {
-    //     if (contact.id) {
-    //       this.contactService.editContact(contact)
-    //         .subscribe(
-    //           (contact: Contact) => {
-    //             let existing = this.contacts.filter(c => c.id == contact.id);
-    //             if (existing.length) {
-    //               Object.assign(existing[0], contact);
-    //             }
-    //           }
-    //         );
-    //     } else {
-    //       this.contactService.addContact(contact)
-    //         .subscribe(
-    //           contact => {
-    //             this.contacts.push(contact);
-    //           }
-    //         );
-    //     }
-    //   }
+    submit(gallery: Gallery) {
+        if (gallery.id) {
+          this.galleriesService.editGallery(gallery)
+            .subscribe();
+          this.router.navigate(['/gallery', this.gallery.id]);   
+        } else {
+          this.galleriesService.addGallery(gallery)
+            .subscribe();
+            this.router.navigate(['/my-galleries']);     
+        }
+      }
    
 }

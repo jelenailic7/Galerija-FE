@@ -1,5 +1,5 @@
 <h3>{{ gallery.name }}</h3>
-<p><a routerLink="/author/{{gallery.user?.id}}">{{ gallery.user?.first_name }} {{ gallery.user?.last_name }}</a></p>
+<p><a routerLink="/author/{{gallery?.user?.id}}">{{ gallery.user?.first_name }} {{ gallery.user?.last_name }}</a></p>
 <p>{{ gallery.description }}</p>
 
 <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -21,12 +21,12 @@
             <span class="sr-only">Next</span>
           </a>
 </div>  -->
-   <!-- <div *ngIf="(auth.user.id == gallery.user_id)">
+   <div *ngIf="checked()">
           <button type="button" class="btn btn-primary" (click)="deleteGallery(gallery)">Delete</button>
-          <button type="button" class="btn btn-primary" (click)="editGallery">Edit</button>
+          <button type="button" class="btn btn-primary" (click)="editGallery(gallery)">Edit</button>
       </div>
 
-<hr>-->
+<hr>
   
 <app-comment-show></app-comment-show> 
 

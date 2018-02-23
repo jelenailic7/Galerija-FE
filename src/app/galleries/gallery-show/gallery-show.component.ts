@@ -21,22 +21,23 @@ export class GalleryShowComponent {
                 private galleriesService:GalleriesService,
                 private auth: AuthService,
                 private router: Router){
+        
 
     }
 
-    public ngOnInit() {
+    public ngOnInit() { 
       this.route.data
           .subscribe((data: {gallery: Gallery}) => {
-              this.gallery = data.gallery;
-              
-          });
+              this.gallery = data.gallery;  
+                
+          });     
         }
 
     public submit(comment) {
             let id = +this.route.snapshot.paramMap.get('id');
             this.galleriesService.addComment(comment, id)
              .subscribe((comment) => {
-              this.comments.push(comment);
+               this.comment = comment;
          });    
    }  
 
@@ -46,11 +47,21 @@ export class GalleryShowComponent {
      this.router.navigate(['/my-galleries']);
    }
 
-  //  public editGallery(gallery){
-  //    this.galleriesService.editGallery(gallery).subscribe();
-  //    this.router.navigate(['/my-galleries']);
 
-  //  }
+
+
+   public editGallery(gallery){
+     this.router.navigate(['/edit-gallery', gallery.id]);
+     this.galleriesService.editGallery(gallery).subscribe((gallery)=>
+          this.gallery = gallery);
+          console.log('ko');
+
+   }
     
+   public checked() {
+
+    return this.auth.user.id === this.gallery.user.id
+
+   }
 
 }

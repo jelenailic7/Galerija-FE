@@ -146,10 +146,9 @@ public _url = 'http://localhost:8000/api/galleries/';
             gallery.description,
             gallery.image_url,
             gallery.user,
+            gallery.user_id,
             gallery.created_at,
-           // gallery.comments
            );
-         //   this.comments = newGallery['comments'].map((c) => {return new Comment(c.text, c.gallery_id) });
         o.next(newGallery);
           return o.complete();
       });
@@ -220,31 +219,36 @@ public removeGallery(gallery: Gallery)
   }
 
 
-  // public editGallery(gallery: Gallery)
-  // {
-  //   return new Observable((o: Observer<any>) => {
-  //     this.http.put('http://localhost:8000/api/gallerys/' + gallery.id, {
-  //       'name': gallery.name,
-  //       'description': gallery.description,
-  //       'image_url': gallery.image_url,
-  //     },
-  //     {
-  //       headers: this.authService.getRequestHeaders(),
-  //     })
-  //       .subscribe(
-  //         (gallery: any) => {
-  //           let existing = this.galleries.filter(g => g.id == gallery.id);
-  //           if (existing.length) {
-  //             existing[0].name = gallery.name;
-  //             existing[0].description = gallery.description;
-  //             existing[0].image_url = gallery.image_url;
-  //           }
-
-  //           o.next(existing[0]);
-  //           return o.complete();
-  //         }
-  //       );
-  //   });
-  // }
+  public editGallery(gallery: Gallery)
+  {
+    return new Observable((o: Observer<any>) => {
+      this.http.put('http://localhost:8000/api/edit-gallery/' + gallery.id, {
+        'name': gallery.name,
+        'description': gallery.description,
+        'image_url': gallery.image_url,
+      },
+      {
+        headers: this.authService.getRequestHeaders(),
+      })
+        .subscribe(
+          (gallery: any) => {
+            let existing = this.galleries.filter(g => g.id == gallery.id);
+            if (existing.length) {
+              existing[0].name = gallery.name;
+              existing[0].description = gallery.description;
+              existing[0].image_url = gallery.image_url;
+            }
+            o.next(existing[0]); 
+            return o.complete();
+          }
+        );
+    });
+  }
   
 }
+
+
+// let existing = this.galleries.filter(g => c.id == gallery.id);
+// if (existing.length) {
+//   Object.assign(existing[0], gallery);
+// }

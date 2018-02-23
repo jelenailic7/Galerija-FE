@@ -10,9 +10,10 @@ export class Gallery {
     public user: User;
     public created_at :string;
     public comments: Comment;
+    public user_id: number;
   
  
-    constructor(id? , name?, description?, image_url?, user?, created_at?, comments?) {
+    constructor(id? , name?, description?, image_url?, user?, created_at?, comments?,user_id?) {
       this.id = id;
       this.name = name;
       this.description = description;
@@ -20,6 +21,7 @@ export class Gallery {
       this.user = user;
       this.created_at = created_at;
       this.comments = comments;
+      this.user_id = user_id;
       
   }
  }
