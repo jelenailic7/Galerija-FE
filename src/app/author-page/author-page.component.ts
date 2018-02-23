@@ -30,8 +30,3 @@ export class AuthorPageComponent implements OnInit {
   }
   
 }
-// getPaginatedGalleries() {
-//   let tmp = this.galleries.slice(this.offset, this.offset + 10);
-//   this.offset += 10;
-//   return tmp;
-// }

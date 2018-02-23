@@ -35,13 +35,11 @@
                 </div>
             </div>
             <button class="btn" (click)="addImage()">Add more images</button>
-            <div *ngIf="selected">
-            <input #image_url="ngModel" required [(ngModel)]="gallery.image_url" name="image_url" class="form-control">
-            </div>
+        
       
       
             <div class="input-group col-md-5 pl-0 my-lg-4 my-2">
-                <button [disabled]="!galleryForm.valid" type="submit" class="btn btn-primary mr-2">{{ galleryId ? "Edit" : "Add" }}</button>
+                <button [disabled]="!galleryForm.valid" type="submit" class="btn btn-primary mr-2">{{ galleryId? "Edit" : "Add" }} </button>
                 <button type="button" class="btn btn-default mr-2" (click)="cancel()" [disabled]="galleryForm.form.pristine">
                             Cancel
                       </button>

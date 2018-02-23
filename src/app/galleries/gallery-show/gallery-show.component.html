@@ -2,13 +2,13 @@
 <p><a routerLink="/author/{{gallery?.user?.id}}">{{ gallery.user?.first_name }} {{ gallery.user?.last_name }}</a></p>
 <p>{{ gallery.description }}</p>
 
-<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div  class="carousel-item"  *ngFor="let url of gallery.image_url; let index = index" [class.active]="index == 0" >
-                <!-- <a href="{{ url }}" target="_blank"> -->
-                    <!-- <img src="{{ url }}" class="d-block w-100" alt="">
-                <!-- </a> -->
-            <!-- </div>
+                <a href="{{ url }}" target="_blank"> -->
+                    <img src="{{ url }}" class="d-block w-100" alt="">
+                </a>
+             </div>
         </div>
         
     
@@ -20,7 +20,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-</div>  -->
+</div> 
    <div *ngIf="checked()">
           <button type="button" class="btn btn-primary" (click)="deleteGallery(gallery)">Delete</button>
           <button type="button" class="btn btn-primary" (click)="editGallery(gallery)">Edit</button>
@@ -37,4 +37,3 @@
 
 
 
-    <!-- *ngFor="let image of gallery.image_url; let index = index" [class.active]="index == 0" -->

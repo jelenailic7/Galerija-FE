@@ -248,7 +248,3 @@ public removeGallery(gallery: Gallery)
 }
 
 
-// let existing = this.galleries.filter(g => c.id == gallery.id);
-// if (existing.length) {
-//   Object.assign(existing[0], gallery);
-// }

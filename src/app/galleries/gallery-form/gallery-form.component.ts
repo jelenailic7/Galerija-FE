@@ -13,6 +13,7 @@ export class GalleryFormComponent  {
     public gallery: Gallery = new Gallery();
 
     public galleryId:number;
+
     private selected:boolean;
 
 
@@ -26,26 +27,10 @@ export class GalleryFormComponent  {
 
     public ngOnInit(){
             let id = +this.route.snapshot.paramMap.get('id');
-            console.log(id);
             this.galleryId=id;
-            console.log(this.galleryId);
-            console.log(this.gallery); //
 
     }
 
-
-    public addImage() {
-        this.selected = true;
-    }
-
-
-
-
-    // public submit(gallery: Gallery) {
-    //     this.galleriesService.addGallery(gallery).subscribe();
-    //         this.router.navigate(['/my-galleries']);
-     
-    // }
 
     public cancel() {
         this.router.navigate(['/my-galleries']);
@@ -57,7 +42,7 @@ export class GalleryFormComponent  {
             .subscribe();
           this.router.navigate(['/galleries', this.galleryId]);   
         } else {
-          this.galleriesService.addGallery(gallery)
+          this.galleriesService.addGallery(this.gallery)
             .subscribe();
             this.router.navigate(['/my-galleries']);     
         }

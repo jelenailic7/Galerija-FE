@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Gallery } from '../../models/gallery';
 import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../services/galleries.service';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './gallery-show.component.html'
 })
 export class GalleryShowComponent {
+
 
   private gallery: Gallery;
   private comment: Comment;
@@ -50,15 +51,13 @@ export class GalleryShowComponent {
 
 
 
-   public editGallery(gallery){
+   public editGallery(gallery){   
      this.router.navigate(['/edit-gallery', this.gallery.id]);
      
    }
     
    public checked() {
-
     return this.auth.user.id === this.gallery.user.id
-
    }
 
 }
