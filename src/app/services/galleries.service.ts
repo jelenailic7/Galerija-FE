@@ -244,6 +244,22 @@ public removeGallery(gallery: Gallery)
         );
     });
   }
+  public deleteComment(comment){
+    return new Observable((o: Observer<any>) => {
+      this.http.delete('http://localhost:8000/api/comments/'+ comment.id,
+        {
+          headers: this.authService.getRequestHeaders(),
+        })
+        .subscribe(
+          () => {
+            const index = this.comments.indexOf(comment);
+            this.comments.splice(index, 1);
+            o.next(index);
+            return o.complete();
+          }
+        );
+    });
+  }
   
 }
 

@@ -28,7 +28,7 @@
 
 <hr>
   
-<app-comment-show></app-comment-show> 
+<app-comment-show (onDelete)="deleteComment($event)"></app-comment-show> 
 
 <div *ngIf="auth.isAuthenticated">
 <app-comment-form #commentForm (onSubmit)="submit($event)"></app-comment-form>

@@ -41,6 +41,13 @@ export class GalleryShowComponent {
                this.comment = comment;
          });    
    }  
+   public deleteComment(comment){
+        alert('Are you sure you want to delete this comment?');
+        let id = +this.route.snapshot.paramMap.get('id');
+        this.galleriesService.deleteComment(comment)
+        .subscribe();
+  
+   }
 
    public deleteGallery(gallery){
      alert('Are you sure you want to delete this gallery?');
