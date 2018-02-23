@@ -10,9 +10,11 @@ import { User } from '../models/user';
 export class AuthService {
 
   public isAuthenticated: boolean;
+  public user;
 
   constructor(private http: HttpClient, private router:Router) {
     this.isAuthenticated = !!window.localStorage.getItem('loginToken');
+    this.user = window.localStorage.getItem('user');
    }
    
   public login(email:string, password: string) {
@@ -21,10 +23,11 @@ export class AuthService {
          'email': email,
          'password': password
        }).subscribe(
-         (data: {token: string}) => {
+         (data: {token: string, user}) => {
            window.localStorage.setItem('loginToken',data.token);
+           window.localStorage.setItem('user', data.user);
+           console.log(data.user);
            this.isAuthenticated = true;
-
            o.next(data.token);
            return o.complete();
          },(err)=> {
@@ -40,6 +43,7 @@ export class AuthService {
   public logout()
   {
     window.localStorage.removeItem('loginToken');
+    window.localStorage.removeItem('user');
     this.isAuthenticated = false;
     this.router.navigate(['/login']);
   }

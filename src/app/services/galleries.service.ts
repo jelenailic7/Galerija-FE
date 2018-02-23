@@ -147,7 +147,9 @@ public _url = 'http://localhost:8000/api/galleries/';
             gallery.image_url,
             gallery.user,
             gallery.created_at,
-            gallery.comments )
+           // gallery.comments
+           );
+         //   this.comments = newGallery['comments'].map((c) => {return new Comment(c.text, c.gallery_id) });
         o.next(newGallery);
           return o.complete();
       });
@@ -156,7 +158,7 @@ public _url = 'http://localhost:8000/api/galleries/';
 
  public getGalleryComments(id){
   return new Observable((o: Observer<any>) => {
-    this.http.get(this._url + id,
+    this.http.get(this._url + id +'/comments',
      {
        headers: this.authService.getRequestHeaders(),
       }).subscribe((comments: any[]) => {
@@ -166,7 +168,8 @@ public _url = 'http://localhost:8000/api/galleries/';
             comment.text,
             comment.user_id,
             comment.gallery_id,
-            comment.created_at )
+            comment.created_at,
+            comment.user )
         )});
         o.next(this.comments);
         o.complete();
@@ -174,19 +177,21 @@ public _url = 'http://localhost:8000/api/galleries/';
     })
   }
 
-  public addComment(comment: Comment, id){
-    console.log("KOMENTAR");  
+  public addComment(comment: Comment, id){ 
     return new Observable((o: Observer<any>) => {
-      console.log('dkksakdas')
-      this.http.post(this._url + id, {
+      this.http.post(this._url + id + '/comments', {
+        'id': comment.id,
         'text': comment.text,
         'gallery_id': id,
+        'user_id': comment.user_id,
+        'created_at': comment.created_at,
+        'user':comment.user
       },
       {
       headers: this.authService.getRequestHeaders(),
       })
       .subscribe((c:any)=> {
-        let newComment = new Comment(c.text, c.gallery_id);
+        let newComment = new Comment(c.id, c.text, c.gallery_id,comment.user_id, c.created_at,c.user);
         this.comments.push(newComment);
         o.next(newComment);
         return o.complete();
@@ -194,5 +199,52 @@ public _url = 'http://localhost:8000/api/galleries/';
   });
 }
 
+
+public removeGallery(gallery: Gallery)
+  {
+    return new Observable((o: Observer<any>) => {
+      this.http.delete('http://localhost:8000/api/galleries/' + gallery.id,
+        {
+          headers: this.authService.getRequestHeaders(),
+        })
+        .subscribe(
+          () => {
+            const index = this.galleries.indexOf(gallery);
+            this.galleries.splice(index, 1);
+
+            o.next(index);
+            return o.complete();
+          }
+        );
+    });
+  }
+
+
+  // public editGallery(gallery: Gallery)
+  // {
+  //   return new Observable((o: Observer<any>) => {
+  //     this.http.put('http://localhost:8000/api/gallerys/' + gallery.id, {
+  //       'name': gallery.name,
+  //       'description': gallery.description,
+  //       'image_url': gallery.image_url,
+  //     },
+  //     {
+  //       headers: this.authService.getRequestHeaders(),
+  //     })
+  //       .subscribe(
+  //         (gallery: any) => {
+  //           let existing = this.galleries.filter(g => g.id == gallery.id);
+  //           if (existing.length) {
+  //             existing[0].name = gallery.name;
+  //             existing[0].description = gallery.description;
+  //             existing[0].image_url = gallery.image_url;
+  //           }
+
+  //           o.next(existing[0]);
+  //           return o.complete();
+  //         }
+  //       );
+  //   });
+  // }
   
 }

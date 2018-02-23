@@ -11,4 +11,12 @@ export class GalleryRowComponent {
 
 @Input() gallery: Gallery;
 
+
+
+constructor(){
+    
+}
+
+
+
 }

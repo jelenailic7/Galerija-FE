@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GalleriesService } from '../services/galleries.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Gallery } from '../models/gallery';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class GalleriesComponent implements OnInit {
 
   public galleries: Gallery []=[];
 
-  constructor(private galleriesService: GalleriesService) { }
+  constructor(private galleriesService: GalleriesService, private auth: AuthService) { }
 
   ngOnInit() {
     this.galleriesService.getGalleries().subscribe(data => {

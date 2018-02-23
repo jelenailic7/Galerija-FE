@@ -11,21 +11,25 @@ import { Comment } from '../../models/comment';
 })
 export class CommentFormComponent {
 
-  private comment: Comment = new Comment();
+@Output() onSubmit = new EventEmitter<Comment>();
 
+  private comment: Comment = new Comment();
 
     constructor(private route:ActivatedRoute,
                 private galleriesService:GalleriesService){
 
     }
+//    public submit(comment: Comment) {
+//         let id = +this.route.snapshot.paramMap.get('id');
+//         this.galleriesService.addComment(comment, id)
+//             .subscribe((data) => {
+//             this.comment = data;
+//         });    
+//}  
+
     public submit(comment: Comment) {
-        console.log('eeeeee');
-            let id = +this.route.snapshot.paramMap.get('id');
-            this.galleriesService.addComment(comment, id)
-             .subscribe((data) => {
-               return this.comment = data;
-         });   
-    
-    }  
+        this.onSubmit.emit(comment);
+        this.comment = new Comment();
+      }
  
 }

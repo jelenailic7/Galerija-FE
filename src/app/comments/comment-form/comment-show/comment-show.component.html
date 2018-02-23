@@ -1,0 +1,12 @@
+<p>Comments</p>
+<div>
+    <ul *ngFor="let comment of comments">
+      
+        <li>
+            <p> {{ comment.user?.first_name }} {{ comment.user?.last_name }} </p>
+            <p> {{ comment?.text }}</p>
+            <p> {{ comment.created_at }}</p>
+
+        </li>
+    </ul>
+</div>  

@@ -23,7 +23,7 @@ import { AuthorPageComponent } from './author-page/author-page.component';
 import { GalleryShowComponent } from './galleries/gallery-show/gallery-show.component';
 import { GalleryResolver } from './resolvers/gallery.resolver';
 import { CommentFormComponent } from './comments/comment-form/comment-form.component';
-import { CommentsShowComponent } from './comments/comments-show.component';
+import { CommentShowComponent } from './comments/comment-form/comment-show/comment-show.component';
 
 
 
@@ -43,7 +43,7 @@ import { CommentsShowComponent } from './comments/comments-show.component';
     AuthorPageComponent,
     GalleryShowComponent,
     CommentFormComponent,
-    CommentsShowComponent
+    CommentShowComponent
   ],
   imports: [
     BrowserModule,

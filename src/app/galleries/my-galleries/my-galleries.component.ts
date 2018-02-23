@@ -15,7 +15,7 @@ export class MyGalleriesComponent implements OnInit {
   constructor(private galleriesService: GalleriesService) { }
 
   ngOnInit() {
-    this.galleriesService.getMyGalleries().subscribe(data => {
+    this.galleriesService.getMyGalleries().subscribe((data) => {
       this.galleries = this.galleriesService.getPaginatedGalleries();
      },
      (err: HttpErrorResponse) => {
@@ -26,5 +26,6 @@ export class MyGalleriesComponent implements OnInit {
   public loadMore() {
   this.galleries.push(...this.galleriesService.getPaginatedGalleries());
   }
+
   
 }

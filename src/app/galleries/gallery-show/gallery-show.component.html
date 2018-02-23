@@ -2,13 +2,13 @@
 <p><a routerLink="/author/{{gallery.user?.id}}">{{ gallery.user?.first_name }} {{ gallery.user?.last_name }}</a></p>
 <p>{{ gallery.description }}</p>
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div  class="carousel-item"  *ngFor="let url of gallery.image_url; let index = index" [class.active]="index == 0" >
                 <!-- <a href="{{ url }}" target="_blank"> -->
-                    <img src="{{ url }}" class="d-block w-100" alt="">
+                    <!-- <img src="{{ url }}" class="d-block w-100" alt="">
                 <!-- </a> -->
-            </div>
+            <!-- </div>
         </div>
         
     
@@ -20,21 +20,19 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+</div>  -->
+   <!-- <div *ngIf="(auth.user.id == gallery.user_id)">
+          <button type="button" class="btn btn-primary" (click)="deleteGallery(gallery)">Delete</button>
+          <button type="button" class="btn btn-primary" (click)="editGallery">Edit</button>
+      </div>
+
+<hr>-->
+  
+<app-comment-show></app-comment-show> 
+
+<div *ngIf="auth.isAuthenticated">
+<app-comment-form #commentForm (onSubmit)="submit($event)"></app-comment-form>
 </div>
-<hr>
-    <p>Comments</p>
-    <div>
-        <ul *ngFor="let comment of gallery.comments">
-          
-            <li>
-                <p> {{ comment?.text }}</p>
-                <p> {{ comment.user?.first_name }}</p>
-
-            </li>
-        </ul>
-    </div>  
-
-<app-comment-form></app-comment-form>
 
 
 

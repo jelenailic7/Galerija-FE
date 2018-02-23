@@ -16,3 +16,4 @@ export class GalleryResolver implements Resolve<any> {
   }
   
 }
+   

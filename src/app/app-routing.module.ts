@@ -45,9 +45,11 @@ const appRoutes: Routes = [
         gallery: GalleryResolver
         } 
     },
-    { path:'galleries/:id',
+    { path:'galleries/:id/comments',
     component: CommentFormComponent},
-     
+    
+    { path: 'edit-gallery/:id',
+    component: GalleryFormComponent }, 
 ];
 
 @NgModule({
