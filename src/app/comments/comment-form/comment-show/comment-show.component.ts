@@ -8,10 +8,11 @@ import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-comment-show',
-  templateUrl: './comment-show.component.html'
+  templateUrl: './comment-show.component.html',
+
 })
 export class CommentShowComponent {
-    
+private id: number;  
 private comments: Comment [];
 private comment;
 @Output() onDelete = new EventEmitter<Comment>();
@@ -20,12 +21,15 @@ private comment;
 
     }
     public ngOnInit(){
-                    let id = +this.route.snapshot.paramMap.get('id');
-                    this.galleriesService.getGalleryComments( id)
+                    let id =this.route.params.subscribe(params => {
+                        this.id = +params['id'];
+                    this.galleriesService.getGalleryComments(this.id)
                         .subscribe((data) => {
                         this.comments = data; 
                     });
+                });
     }
+    
     public checked() {
         return this.auth.user.id === this.comment.user.id
        }

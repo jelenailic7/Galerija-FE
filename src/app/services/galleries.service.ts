@@ -36,6 +36,7 @@ public _url = 'http://localhost:8000/api/galleries/';
                 gallery.description,
                 gallery.image_url,
                 gallery.user,
+                gallery.comments,
                 gallery.created_at)
             )});
             o.next(this.galleries);
@@ -157,7 +158,7 @@ public _url = 'http://localhost:8000/api/galleries/';
 
  public getGalleryComments(id){
   return new Observable((o: Observer<any>) => {
-    this.http.get(this._url + id +'/comments',
+    this.http.get('http://localhost:8000/api'+ '/comments/' +id,
      {
        headers: this.authService.getRequestHeaders(),
       }).subscribe((comments: any[]) => {
@@ -178,7 +179,7 @@ public _url = 'http://localhost:8000/api/galleries/';
 
   public addComment(comment: Comment, id){ 
     return new Observable((o: Observer<any>) => {
-      this.http.post(this._url + id + '/comments', {
+      this.http.post('http://localhost:8000/api'+ '/comments/' +id, {
         'id': comment.id,
         'text': comment.text,
         'gallery_id': id,
@@ -246,7 +247,7 @@ public removeGallery(gallery: Gallery)
   }
   public deleteComment(comment){
     return new Observable((o: Observer<any>) => {
-      this.http.delete('http://localhost:8000/api/comments/'+ comment.id,
+      this.http.delete('http://localhost:8000/api'+ '/comments/' +comment.id,
         {
           headers: this.authService.getRequestHeaders(),
         })

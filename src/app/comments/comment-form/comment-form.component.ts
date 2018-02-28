@@ -10,14 +10,13 @@ import { Comment } from '../../models/comment';
   templateUrl: './comment-form.component.html'
 })
 export class CommentFormComponent {
-
 @Output() onSubmit = new EventEmitter<Comment>();
 
   private comment: Comment = new Comment();
 
     constructor(private route:ActivatedRoute,
                 private galleriesService:GalleriesService){
-
+               
     }
 
 

@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery-show',
-  templateUrl: './gallery-show.component.html'
+  templateUrl: './gallery-show.component.html',
+  providers:[GalleriesService]
 })
 export class GalleryShowComponent {
 
-
+  private id: number;
   private gallery: Gallery;
   private comment: Comment;
   private comments: Comment[];
@@ -29,24 +30,24 @@ export class GalleryShowComponent {
     public ngOnInit() { 
       this.route.data
           .subscribe((data: {gallery: Gallery}) => {
-              this.gallery = data.gallery;  
-                
+              this.gallery = data.gallery;                 
           });     
         }
 
     public submit(comment) {
-            let id = +this.route.snapshot.paramMap.get('id');
-            this.galleriesService.addComment(comment, id)
+            let id = +this.route.params.subscribe(params => {
+              this.id = +params['id'];
+            });
+            this.galleriesService.addComment(comment, this.id)
              .subscribe((comment) => {
                this.comment = comment;
          });    
    }  
    public deleteComment(comment){
         alert('Are you sure you want to delete this comment?');
-        let id = +this.route.snapshot.paramMap.get('id');
         this.galleriesService.deleteComment(comment)
         .subscribe();
-  
+     
    }
 
    public deleteGallery(gallery){
